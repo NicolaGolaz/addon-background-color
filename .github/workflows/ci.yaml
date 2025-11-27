@@ -12,16 +12,22 @@ jobs:
       - name: 2) Installation de nodejs
         uses: actions/setup-node@v4
 
-      - name: 2) lint et build
+      - name: 3) lint et build
         run: |
             npm audit fix
             npm run lint:check
             npm run build
             npm run build:firefox
          
-      - name: 3) Upload l'artefact
+      - name: 4) Upload l'artefact chrome
         uses: actions/upload-artifact@v4
         with: 
           name: artefact
           path: .output/chrome-mv3
+
+      - name: 5) Upload l'artefact firefox
+        uses: actions/upload-artifact@v4
+        with: 
+          name: artefact
           path: .output/firefox-mv2
+
