@@ -3,19 +3,22 @@ name: Création de d'un artefact contenant le projet
 on : [push, pull_request]
 
 jobs:
-  demo:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - name: 1) Récupère le code du repo
         uses: actions/checkout@v5
 
-      - name: 2) Installe NodeJs
+      - name: 2) Installe NodeJs, lint et build
         run: | 
             npm i node
-            npm run lint
+            npm audit
+            npm run lint:check
+            npm run build
+            npm run build:firefox
          
       - name: 3) Upload l'artefact
         uses: actions/upload-artifact@v4
         with: 
           name: artefact
-          path: .
+          path: .output/
