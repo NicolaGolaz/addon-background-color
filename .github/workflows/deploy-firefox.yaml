@@ -1,5 +1,4 @@
-name: Création de d'un artefact contenant le projet
-
+name: Relaease sur firefox
 on:
   create:
     tags:
