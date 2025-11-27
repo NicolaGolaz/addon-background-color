@@ -9,12 +9,13 @@ jobs:
       - name: 1) Récupère le code du repo
         uses: actions/checkout@v5
 
-      - name: 2) lint et build
+      - name: 2) Installation de nodejs
         uses: actions/setup-node@v4
 
       - name: 2) lint et build
         run: |
             npm audit
+            npm audit fix
             npm run lint:check
             npm run build
             npm run build:firefox
