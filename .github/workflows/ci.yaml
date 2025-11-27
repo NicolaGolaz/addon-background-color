@@ -1,6 +1,6 @@
 name: Création de d'un artefact contenant le projet
 
-on : [push, pull_request]
+on: [push, pull_request]
 
 jobs:
   ci:
@@ -14,7 +14,6 @@ jobs:
 
       - name: 2) lint et build
         run: |
-            npm audit
             npm audit fix
             npm run lint:check
             npm run build
