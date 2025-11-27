@@ -1,0 +1,26 @@
+name: Création de d'un artefact contenant le projet
+
+on: [tag]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1) Récupère le code du repo
+        uses: actions/checkout@v5
+
+      - name: 2) Installation de nodejs
+        uses: actions/setup-node@v4
+
+      - name: 3) build firefox
+        run: |
+            npm run build:firefox
+         
+      - name: Sign with web-ext
+        run: |
+          npx web-ext sign \
+            --api-key ${{ secrets.AMO_JWT_ISSUER }} \
+            --api-secret ${{ secrets.AMO_JWT_SECRET }} \
+            --channel unlisted \
+            --source-dir .output/firefox-mv2 \
+            --artifacts-dir ./signed
