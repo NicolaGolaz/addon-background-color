@@ -1,11 +1,11 @@
 name: Relaease sur firefox
 on:
-  create:
+  push:
     tags:
       - "*"
 
 jobs:
-  ci:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: 1) Récupère le code du repo
