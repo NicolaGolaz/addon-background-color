@@ -1,0 +1,21 @@
+name: Création de d'un artefact contenant le projet
+
+on : [push, pull_request]
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1) Récupère le code du repo
+        uses: actions/checkout@v5
+
+      - name: 2) Installe NodeJs
+        run: | 
+            npm i node
+            npm run lint
+         
+      - name: 3) Upload l'artefact
+        uses: actions/upload-artifact@v4
+        with: 
+          name: artefact
+          path: .
