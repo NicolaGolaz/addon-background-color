@@ -13,6 +13,7 @@ jobs:
         run: | 
             npm i node
             npm audit
+            npm audit fix
             npm run lint:check
             npm run build
             npm run build:firefox
