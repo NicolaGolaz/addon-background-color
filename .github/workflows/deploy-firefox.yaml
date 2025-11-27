@@ -16,6 +16,7 @@ jobs:
 
       - name: 3) build firefox
         run: |
+            npm i
             npm run build:firefox
          
       - name: Sign with web-ext
