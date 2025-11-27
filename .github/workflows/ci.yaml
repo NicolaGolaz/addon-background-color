@@ -22,12 +22,12 @@ jobs:
       - name: 4) Upload l'artefact chrome
         uses: actions/upload-artifact@v4
         with: 
-          name: artefact
+          name: artefact chrome
           path: .output/chrome-mv3
 
       - name: 5) Upload l'artefact firefox
         uses: actions/upload-artifact@v4
         with: 
-          name: artefact
+          name: artefact firefox
           path: .output/firefox-mv2
 
